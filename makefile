@@ -24,19 +24,19 @@ $(executable): $(NetConnSocketObj) $(SenderObj) $(ReceiverObj) $(MainObj)
 	@echo linking object files
 	@g++ -o $(executable) $(NetConnSocketObj) $(ReceiverObj) $(SenderObj) $(MainObj)
 
-$(NetConnSocketObj):
+$(NetConnSocketObj): $(NetConnSocketDep) $(SRCDIR)/NetConnSocket.h
 	@echo Compiling NetConnSocket
 	@$(COMPILE) $(NetConnSocketDep) -o $(NetConnSocketObj) -std=c++11
 
-$(SenderObj):
+$(SenderObj): $(SenderDep) $(SRCDIR)/SenderSocket.h
 	@echo Compiling sender object
 	@$(COMPILE) $(SenderDep) -o $(SenderObj) -std=c++11
 
-$(ReceiverObj):
+$(ReceiverObj): $(ReceiverDep) $(SRCDIR)/ReceiverSocket.h
 	@echo Compiling receiver object
 	@$(COMPILE) $(ReceiverDep) -o $(ReceiverObj) -std=c++11
 
-$(MainObj):
+$(MainObj): $(MainDep)
 	@echo Compiling main file
 	@$(COMPILE) $(MainDep) -o $(MainObj) -std=c++11
 

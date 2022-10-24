@@ -1,0 +1,1 @@
+NOTE: Object files before linking will be created under this directory.
